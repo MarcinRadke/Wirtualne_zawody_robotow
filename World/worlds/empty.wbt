@@ -1,0 +1,543 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation -0.8018752389463631 0.5706477134167324 0.17707989252585404 2.113781174772879
+  position -0.6555333860227583 0.7566937740734738 0.9935095253405793
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  rotation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0943951023931957
+  floorSize 2 2
+}
+SolidPipe {
+  translation 0 0.024 0
+  rotation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0943951023931957
+  name "pierscien"
+  height 0.05
+  radius 0.385
+  thickness 0.025
+  appearance PBRAppearance {
+    baseColor 0 0 0
+    roughness 0.5
+    metalness 0
+  }
+}
+Solid {
+  translation 0 0.025 0
+  rotation 1 0 0 -1.5707953071795862
+  children [
+    DEF okragb Shape {
+      geometry Cylinder {
+        height 0.05
+        radius 0.365
+      }
+    }
+  ]
+  name "walec"
+  boundingObject USE okragb
+  physics Physics {
+    density 100
+  }
+  locked TRUE
+}
+Robot {
+  translation -0.15 0.1 0
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.04 -0.02 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_pl"
+        }
+      ]
+      endPoint Solid {
+        translation 0.04 -0.02 0.025
+        rotation -0.577350935856026 0.5773499358561369 -0.5773499358561369 2.094395307179586
+        children [
+          DEF wheelm Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.02
+            }
+          }
+        ]
+        name "solid5"
+        boundingObject USE wheelm
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.04 -0.02 -0.02
+      }
+      device [
+        RotationalMotor {
+          name "motor_l"
+        }
+      ]
+      endPoint Solid {
+        translation 0.04 -0.02 -0.02
+        rotation -0.577350935856026 0.5773499358561369 -0.5773499358561369 2.094395307179586
+        children [
+          Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.02
+            }
+          }
+        ]
+        name "solid6"
+        boundingObject USE wheelm
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.04 -0.02 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_pp"
+        }
+      ]
+      endPoint Solid {
+        translation -0.04 -0.02 0.025
+        rotation 0.5773489358556707 0.5773509358554486 0.5773509358554486 2.0943999999999994
+        children [
+          Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.02
+            }
+          }
+        ]
+        name "solid7"
+        boundingObject USE wheelm
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.04 -0.02 -0.02
+      }
+      device [
+        RotationalMotor {
+          name "motor_p"
+        }
+      ]
+      endPoint Solid {
+        translation -0.04 -0.02 -0.02
+        rotation 0.5773489358556707 0.5773509358554486 0.5773509358554486 2.0943999999999994
+        children [
+          Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.02
+            }
+          }
+        ]
+        name "solid8"
+        boundingObject USE wheelm
+        physics Physics {
+        }
+      }
+    }
+    DEF ramp Transform {
+      translation 0 -0.025 0.095
+      rotation 0 0 1 1.5708
+      children [
+        DEF ramp Solid {
+          translation 0.0147 0 -0.047
+          rotation 0 -1 0 -2.094395307179586
+          children [
+            DEF ramp Shape {
+              appearance PBRAppearance {
+                baseColor 1 1 0
+                roughness 1
+                metalness 0
+              }
+              geometry DEF ramp Box {
+                size 0.005 0.07 0.04
+              }
+            }
+          ]
+          name "dol(1)"
+          boundingObject USE ramp
+          physics Physics {
+            density 5
+          }
+        }
+      ]
+    }
+    DEF ir3 DistanceSensor {
+      translation -0.0300069 -0.015 0.0413637
+      rotation 0.447142855756433 -0.7744727501632629 -0.44749885564159114 1.82286
+      children [
+        DEF sensor Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ir3"
+      boundingObject USE sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DEF ir2 DistanceSensor {
+      translation 0.019992 0.01 0.039984
+      rotation 0 -1 0 1.57
+      children [
+        DEF sensor Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ir2"
+      boundingObject USE sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DEF ir4 DistanceSensor {
+      translation -0.02 0.01 0.04
+      rotation 0 -1 0 1.57
+      children [
+        DEF sensor Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ir4"
+      boundingObject USE sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DEF ir1 DistanceSensor {
+      translation 0.0299931 -0.015 0.0413157
+      rotation 0.447142855756433 -0.7744727501632629 -0.44749885564159114 1.82286
+      children [
+        DEF sensor Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ir1"
+      boundingObject USE sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DEF body Transform {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.07 0.05 0.08
+          }
+        }
+      ]
+    }
+  ]
+  name "robot_nr1"
+  boundingObject USE body
+  physics Physics {
+  }
+  controller "kontroler1"
+}
+Robot {
+  translation 0.15 0.1 0
+  rotation 0 1 0 -5.307179586466759e-06
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.04 -0.02 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_pl"
+        }
+      ]
+      endPoint Solid {
+        translation 0.04 -0.02 0.025
+        rotation -0.577350935856026 0.5773499358561369 -0.5773499358561369 2.094395307179586
+        children [
+          DEF wheelm Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.02
+            }
+          }
+        ]
+        name "solid(1)1"
+        boundingObject USE wheelm
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.04 -0.02 -0.02
+      }
+      device [
+        RotationalMotor {
+          name "motor_l"
+        }
+      ]
+      endPoint Solid {
+        translation 0.04 -0.02 -0.02
+        rotation 0.5773509358560258 -0.577349935856137 -0.577349935856137 2.09439
+        children [
+          Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.02
+            }
+          }
+        ]
+        name "solid(2)2"
+        boundingObject USE wheelm
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.04 -0.02 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_pp"
+        }
+      ]
+      endPoint Solid {
+        translation -0.04 -0.02 0.025
+        rotation 0.5773489358556707 0.5773509358554486 0.5773509358554486 2.0943999999999994
+        children [
+          Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.02
+            }
+          }
+        ]
+        name "solid(3)3"
+        boundingObject USE wheelm
+        physics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.04 -0.02 -0.02
+      }
+      device [
+        RotationalMotor {
+          name "motor_p"
+        }
+      ]
+      endPoint Solid {
+        translation -0.04 -0.02 -0.02
+        rotation 0.5773489358556707 0.5773509358554486 0.5773509358554486 2.0943999999999994
+        children [
+          Shape {
+            appearance PBRAppearance {
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.02
+            }
+          }
+        ]
+        name "solid4"
+        boundingObject USE wheelm
+        physics Physics {
+        }
+      }
+    }
+    DEF ramp Transform {
+      translation 0 -0.025 0.095
+      rotation 0 0 1 1.5708
+      children [
+        DEF ramp Solid {
+          translation 0.0147 0 -0.047
+          rotation 0 -1 0 -2.094395307179586
+          children [
+            DEF ramp Shape {
+              appearance PBRAppearance {
+                baseColor 1 1 0
+                roughness 1
+                metalness 0
+              }
+              geometry DEF ramp Box {
+                size 0.005 0.07 0.04
+              }
+            }
+          ]
+          name "dol(1)"
+          boundingObject USE ramp
+          physics Physics {
+            density 5
+          }
+        }
+      ]
+    }
+    DEF ir3 DistanceSensor {
+      translation -0.0300069 -0.015 0.0413637
+      rotation 0.447142855756433 -0.7744727501632629 -0.44749885564159114 1.82286
+      children [
+        DEF sensor Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ir3"
+      boundingObject USE sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DEF ir2 DistanceSensor {
+      translation 0.019992 0.01 0.039984
+      rotation 0 -1 0 1.57
+      children [
+        DEF sensor Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ir2"
+      boundingObject USE sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DEF ir4 DistanceSensor {
+      translation -0.02 0.01 0.04
+      rotation 0 -1 0 1.57
+      children [
+        DEF sensor Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ir4"
+      boundingObject USE sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DEF ir1 DistanceSensor {
+      translation 0.0299931 -0.015 0.0413157
+      rotation 0.447142855756433 -0.7744727501632629 -0.44749885564159114 1.82286
+      children [
+        DEF sensor Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ir1"
+      boundingObject USE sensor
+      physics Physics {
+      }
+      type "infra-red"
+    }
+    DEF body Transform {
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 1
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.07 0.05 0.08
+          }
+        }
+      ]
+    }
+  ]
+  name "robot_nr2"
+  boundingObject USE body
+  physics Physics {
+  }
+  controller "kontroler2"
+}
